@@ -1,0 +1,28 @@
+.main{
+  
+    width:100%;
+    padding-top: 50pxpx;
+    
+}
+.leaddata{
+    background: rgb(248, 253, 251);
+}
+.internal{
+    border-top-left-radius: 10px;
+    background:linear-gradient(90deg, #baffdf 0%, #4bd278 100%);
+}
+.external{
+    
+    background:linear-gradient(90deg, #36b861 0%, #338d4b 100%);
+}
+.link{
+    border-top-right-radius: 10px;
+    background: rgb(12, 85, 16);
+}
+.outer{
+    background: white;
+    border-radius: 10px;
+}
+.sub{
+   margin-left: 10px;
+}

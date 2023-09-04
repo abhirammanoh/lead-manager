@@ -1,0 +1,34 @@
+<template>
+<div class="outer">
+    <div class="main slds-grid  slds-text-align_center">
+        <div class="internal slds-col">
+            <p>Leads In System</p>
+            <p style="font-size: 29px;color:green">30</p>
+        </div>
+        <div class="external slds-col ">
+            <p>Leads In Connected Org</p>
+            <p style="font-size: 29px;color:rgb(128, 31, 31)">20</p>
+        </div>
+        <div class="link slds-col">
+            <p style="color: white;">Connected</p>
+            <p style="color: white;font-size: 29px;">Org 1</p>
+        </div>
+    </div>
+    <br><br>
+    <div class="lead_head">
+    <br>
+    <p class="slds-text-heading_small sub">Leads in ORG1 </p>
+    <lightning-button variant="brand-outline" label="Import All" title="Import all the leads" onclick={refreshLeads} class="slds-m-left_x-small slds-float_right"></lightning-button>
+    <lightning-button variant="brand-outline" label="Refresh" title="Refresh data" onclick={importLeads} class="slds-m-left_x-small slds-float_right"></lightning-button>
+    </div>
+    <br><br>
+    <div>
+        <lightning-datatable
+        key-field="id"
+        data={data}
+        columns={columns}
+        >
+        </lightning-datatable>
+    </div>
+</div>
+</template>
