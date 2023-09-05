@@ -13,21 +13,21 @@ public class LeadManagerCtrl {
            
             for(object obj:data){
                 Map<string,object>newMap=(Map<string,object>)obj;
-                LeadWrapper lw=new Leadwrapper((string)newMap.get('Name'),(string)newMap.get('Company'),(string)newMap.get('Email'),(string)newMap.get('Status'));
-                Leads.add(lw);
+                LeadWrapper leadsToShow=new Leadwrapper((string)newMap.get('Name'),(string)newMap.get('Company'),(string)newMap.get('Email'),(string)newMap.get('Status'));
+                Leads.add(leadsToShow);
             }
         }
         system.debug(Leads);
         
     }
     class LeadWrapper{
-        public LeadWrapper(string Name,string Com,String em,string industryy){
-                Fname=Name;
-                company=com;
-                email=em;
-                industry=industryy;
+        public LeadWrapper(string Name,string company,String email,string industry){
+                this.name=Name;
+                this.company=company;
+                this.email=email;
+                this.industry=industry;
         }
-        public string Fname;
+        public string name;
         public string company;
         public string email;
         public string industry;

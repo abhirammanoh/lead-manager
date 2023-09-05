@@ -1,8 +1,8 @@
-@RestResources (urlMapping= '/Leads/*')
+@RestResource (urlMapping= '/Leads/*')
 global class LeadManagerWebService{
     @HttpGet
-    global static Lead getLeads(){
-        Lead openLeads=[SELECT Name,Email,Company,Status,Industry FROM Lead where Status='Open' limit 50];
+    global static List<Lead> getLeads(){
+        List<Lead>openLeads=[SELECT Name,Email,Company,Status,Industry FROM Lead where Status='Open - Not Contacted' limit 50];
         return openLeads;
     }
 }

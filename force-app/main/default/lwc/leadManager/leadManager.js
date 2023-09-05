@@ -10,7 +10,6 @@ export default class LeadManager extends LightningElement {
     data=[
         {Name:'xav',Company:'xcorp',State:'NZ',Email:'test1@test.com'},
         {Name:'dav',Company:'delta',State:'BM',Email:'test2@test.com'},
-        {Name:'jim',Company:'sigma',State:'LS',Email:'test3@test.com'},
-        {Name:'ross',Company:'meta',State:'DG',Email:'test4@test.com'}
+        {Name:'jim',Company:'sigma',State:'LS',Email:'test3@test.com'}
     ];
 }
