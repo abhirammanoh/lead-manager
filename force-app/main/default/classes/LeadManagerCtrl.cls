@@ -1,6 +1,6 @@
 public class LeadManagerCtrl {
 	@AuraEnabled(cacheable=true)
-    public static void LeadData(){
+    public static List<LeadWrapper> LeadData(){
         HttpRequest request=new HttpRequest();
         request.setEndpoint('callout:Dev_2/services/apexrest/Leads');
         request.setHeader('Content-Type', 'application/json');
@@ -17,8 +17,8 @@ public class LeadManagerCtrl {
                 Leads.add(leadsToShow);
             }
         }
-        system.debug(Leads);
-        
+        //system.debug(Leads);
+        return Leads;
     }
     class LeadWrapper{
         public LeadWrapper(string Name,string company,String email,string industry){

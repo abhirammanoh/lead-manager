@@ -3,32 +3,73 @@
     <div class="main slds-grid  slds-text-align_center">
         <div class="internal slds-col">
             <p>Leads In System</p>
-            <p style="font-size: 29px;color:green">30</p>
+            <p style="font-size: 29px;color:green">{systemLeads.data}</p>
         </div>
         <div class="external slds-col ">
             <p>Leads In Connected Org</p>
-            <p style="font-size: 29px;color:rgb(128, 31, 31)">20</p>
-        </div>
+            <p style="font-size: 29px;color:rgb(128, 31, 31)">{totalRecords}</p>
+        </div>  
         <div class="link slds-col">
             <p style="color: white;">Connected</p>
-            <p style="color: white;font-size: 29px;">Org 1</p>
+            <p style="color: white;font-size: 29px;">{orgName}</p>
         </div>
     </div>
     <br><br>
     <div class="lead_head">
+        <br>
+        <p class="slds-text-heading_small sub">Leads in {orgName} </p>
+        <template if:true={help}>
+            <lightning-pill label="Leads which are imported to the system or have matching data will not be displays" onremove={helpText}></lightning-pill>
+        </template>
+        
+        </div>
+        <div > 
+            <lightning-layout>
+                <lightning-layout-item padding="around-small" >
+                <lightning-input type="serach" label="Find Lead" onchange={leadSearch}></lightning-input>
+            <lightning-layout-item  padding="around-small" flexibility="auto">
+            </lightning-layout-item>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" alignment-bump="left"  >
+                <lightning-button variant="brand-outline" label="Import All" title="Import all the leads" onclick={importLeads} class="slds-m-left_x-small slds-float_right slds-p-top_large"></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" >
+                <lightning-button variant="brand-outline" label="Refresh" title="Refresh data" onclick={refreshLeads} class="slds-m-left_x-small slds-float_right slds-p-top_large"></lightning-button>
+            </lightning-layout-item>
+            </lightning-layout>
+        </div>
     <br>
-    <p class="slds-text-heading_small sub">Leads in ORG1 </p>
-    <lightning-button variant="brand-outline" label="Import All" title="Import all the leads" onclick={refreshLeads} class="slds-m-left_x-small slds-float_right"></lightning-button>
-    <lightning-button variant="brand-outline" label="Refresh" title="Refresh data" onclick={importLeads} class="slds-m-left_x-small slds-float_right"></lightning-button>
-    </div>
-    <br><br>
     <div>
         <lightning-datatable
         key-field="id"
-        data={data}
+        data={leadData}
         columns={columns}
         >
         </lightning-datatable>
     </div>
+    <template  if:true={importConfirmation}>
+        <section role="dialog" tabindex="-1" aria-modal="true" aria-labelledby="modal-heading-01" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+              <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse">
+                <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#close"></use>
+                </svg>
+                <span class="slds-assistive-text">Cancel and close</span>
+              </button>
+              <div class="slds-modal__header">
+                <h1 id="modal-heading-01" class="slds-modal__title slds-hyphenate">Import Confirmation</h1>
+              </div>
+              <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <p>You are about to initiate a data importing from {orgName}. We have {totalRecords} records to import. Do you want to go ahead! </p>
+                
+              </div>
+              <div class="slds-modal__footer">
+                <button class="slds-button slds-button_neutral" aria-label="Cancel and close" onclick={leave}>Leave</button>
+                <button class="slds-button slds-button_brand" onclick={proceed}>Proceed</button>
+              </div>
+            </div>
+          </section>
+          <div class="slds-backdrop slds-backdrop_open" role="presentation"></div>
+    </template>
 </div>
 </template>
